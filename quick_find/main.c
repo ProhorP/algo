@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #define N 10000
 
 int
@@ -23,10 +24,6 @@ main ()
 
     }
 
-  return 0;
-
-
-
-
+  return EXIT_SUCCESS;
 
 }
