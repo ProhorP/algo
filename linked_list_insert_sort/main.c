@@ -9,15 +9,15 @@ struct node
   link next;
 } node;
 
-struct node heada, headb;
+struct node heada = { 0, NULL }, headb = { 0, NULL };
 
 int
 main ()
 {
-  link t, u, x, a = &heada, b;
+  link t, x;
   int i = 0;
 
-  for (i = 0, t = a; i < 5; i++)
+  for (i = 0, t = &heada; i < 5; i++)
     {
 
       t->next = (link) malloc (sizeof (node));
@@ -27,21 +27,18 @@ main ()
 
     }
 
-  b = &headb;
-  b->next = NULL;
-
-  for (t = a->next; t != NULL; t = u)
+  for (t = heada.next; t != NULL; t = heada.next)
     {
-      u = t->next;
+      heada.next = t->next;
 
-      for (x = b; x->next != NULL; x = x->next)
+      for (x = &headb; x->next != NULL; x = x->next)
 	if (x->next->item > t->item)
 	  break;
       t->next = x->next;
       x->next = t;
     }
 
-  x = b;
+  x = headb.next;
 
   while (x != NULL)
     {
