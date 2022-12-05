@@ -35,8 +35,8 @@ main (int argc, char *argv[])
       printf ("%2d %s\n", i, fs);
     }
 
-  free (fs);
   free (f);
+  free (fs);
 
   return EXIT_SUCCESS;
 
